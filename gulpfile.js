@@ -18,9 +18,9 @@ var paths = {
   mainSass: "scss/main.scss",
   js: "js/**/*.js",
   mainJS: "js/app.js",
-  // components: "components/**.js"
-  headerJS: "js/components/header.js",
-  boarJS: "js/components/board.js"
+  components: "js/components/**/*.js",
+  headerJS: "js/components/**/*.js",
+  boarJS: "js/components/**/*.js"
 };
 
 var sources = {
@@ -30,7 +30,7 @@ var sources = {
   rootSass: config.source + paths.assets + paths.mainSass,
   js: config.source + paths.assets + paths.js,
   rootJS: config.source + paths.assets + paths.mainJS,
-  // rootComponents: config.source + paths.assets + paths.components
+  components: config.source + paths.assets + paths.components,
   rootHeader: config.source + paths.assets + paths.headerJS,
   rootBoard: config.source + paths.assets + paths.boarJS
 };
@@ -55,11 +55,11 @@ gulp.task("js", () => {
     .pipe(gulp.dest(config.dist + paths.assets + "js"));
 });
 
-// gulp.task("components", () => {
-//   gulp.src([sources.rootHeader, sources.rootBoard])
-//     .pipe(browsefiry())
-//     .pipe(gulp.dest(config.dist + paths.assets + "js/components"))
-// });
+gulp.task("components", () => {
+  gulp.src([sources.rootHeader, sources.rootBoard])
+    .pipe(browsefiry())
+    .pipe(gulp.dest(config.dist + paths.assets + "js/components"))
+});
 
 gulp.task("sass-watch", ["sass"], (done) => {
   browserSync.reload();
@@ -76,10 +76,10 @@ gulp.task("html-watch", ["html"], (done) => {
   done();
 });
 
-// gulp.task("components-watch",["components"] (done) => {
-//   browserSync.reload();
-//   done();
-// });
+gulp.task("components-watch", ["components"], (done) => {
+  browserSync.reload();
+  done();
+});
 
 gulp.task("serve", () => {
   browserSync.init({
@@ -90,5 +90,5 @@ gulp.task("serve", () => {
   gulp.watch(sources.html,["html-watch"]);
   gulp.watch(sources.sass, ["sass-watch"]);
   gulp.watch(sources.js, ["js-watch"]);
-  // gulp.watch(sources.)
+  gulp.watch(sources.components, ["components-watch"]);
 });

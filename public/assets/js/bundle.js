@@ -8,22 +8,20 @@ const render = () => {
 
 }
 
-
-
 render();
-//test1
+//test1nnn
 
 // 'use strict';
-// const root = $('.root');
 //
-// const render = (root) => {
-//   const wrapper = $('<div class="wrapper"></div>');
-//   wrapper.append(Header());
-//   wrapper.append(Board());
+// $( _ => {
+// const render = () => {
+//   const root = $('#root');
+//   const wrapper = $('<div class="wrapper"><h2>testjquery</h2></div>');
+//
 //   root.append(wrapper);
-//
 // }
 //
-// render(root);
+// render();
+// });
 
 },{}]},{},[1])
