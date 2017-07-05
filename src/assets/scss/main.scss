@@ -1,7 +1,11 @@
-$bg-color: black;
-$text-c: white;
-
-h1{
-  background-color: $bg-color;
-  color:$text-c;
-}
+// BASE - Variables, mixins, etc.
+@import '0-base/_base.scss';
+@import '0-base/_variables.scss';
+@import '0-base/_mixins.scss';
+@import '0-base/_reset.scss';
+// MODULES - Individual site components
+@import '1-modules/_components.scss';
+@import '1-modules/_sections.scss';
+// LAYOUTS - Page layout styles */
+@import '2-layout/_header.scss';
+@import '2-layout/_board.scss';
