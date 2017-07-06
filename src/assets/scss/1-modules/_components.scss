@@ -1,0 +1,29 @@
+.drop {
+    -webkit-animation-name: drop;
+    /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 1.5s;
+    /* Safari 4.0 - 8.0 */
+    animation-name: drop;
+    animation-duration: 1.5s;
+}
+
+@-webkit-keyframes drop {
+    0% {
+        top: 0px;
+    }
+    100% {
+        top: 90px;
+    }
+}
+
+
+/* Standard syntax */
+
+@keyframes drop {
+    0% {
+        top: 0px;
+    }
+    100% {
+        top: 90px;
+    }
+}

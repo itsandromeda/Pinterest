@@ -1,8 +1,8 @@
 .nav {
-    display: flex;
-    align-items: center;
-    padding: 0.5em 2em;
-    border-bottom: 1px solid #EFEFEF;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 5;
     img {
         height: 31px;
         margin-right: 2em;
@@ -11,6 +11,14 @@
         color: $secondary-color;
         font-size: 1.8em;
     }
+}
+
+.top-nav {
+    background-color: #fff;
+    padding: 0.5em 2em;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #EFEFEF;
     form {
         position: relative;
         display: flex;
@@ -38,5 +46,56 @@
             position: absolute;
             left: 0.95em;
         }
+    }
+}
+
+.bot-nav {
+    padding: 1.1em 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    .btn-danger {
+        background-color: #bd081c;
+        font-weight: bold;
+        font-size: 1.15em;
+    }
+    .btn-danger:hover {
+        background-color: #B2081A;
+    }
+    h1 {
+        font-size: 1.3em;
+        font-weight: bold;
+    }
+    .drop {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100px;
+        /* Need a specific value to work */
+    }
+}
+
+.action-icons {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    ul {
+        @extend %flex-center;
+        margin: 0;
+    }
+    li {
+        margin-right: 0.5em;
+    }
+    li:last-child {
+        margin: none;
+    }
+    a {
+        @extend %flex-center;
+        width: 2em;
+        height: 2em;
+    }
+    a:hover {
+        background-color: #F0F0F0;
+        border-radius: 50%;
     }
 }
