@@ -1,0 +1,19 @@
+.root {
+    position: relative;
+    top: 145px;
+    .container-fluid {
+        padding: 0 30px;
+    }
+}
+
+.item {
+    background-color: pink;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 10px;
+    margin: 20px;
+    img {
+        max-width: 100%;
+        border-radius: 5px;
+    }
+}
