@@ -13,9 +13,15 @@ const getJSON = (url, cb) => {
 
 const render = (root) => {
     root.empty();
-    const container = $('<div class="container-fluid"></div>');
+    const container = $('<div class="container-fluid"></div>'),
+          avatar = $('.avatar'),
+          pins = $('.pins'),
+          followers = $('.followers');
+    avatar.append(image());
+    pins.append(pinNum());
+    followers.append(followNum());
     $.each(state.board.data, function (i, element) {
-        const div = $('<div class="item col-xs-4 col-md-2"></div>');
+        const div = $('<div class="item"></div>');
         const imagen = $('<img src="' + element.image.original.url + '" alt="">');
         const descripcion = $('<p class="info">' + element.note + '</p>');
 
@@ -41,7 +47,6 @@ $(_ => {
             return alert(err.message);
         }
         state.board = json; /*Trae toda la data*/
-        // console.log(json);
         const root = $('.root');
         render(root);
     });
@@ -52,7 +57,7 @@ getJSON('https://api.pinterest.com/v1/users/arabelyuska/?access_token=AQ6wsInV6B
         return alert(err.message);
     }
     state.user = json; /*Trae toda la data*/
-    console.log(json.data.image);
+    console.log(json.data.image['60x60'].url);
 });
 // pines y seguidores del Board
 getJSON('https://api.pinterest.com/v1/boards/arabelyuska/web-ui/?access_token=AQ6wsInV6BsgRR4gFb7NitJJBjjvFM4qT4K8JqlEI1oqT0A7nAAAAAA&fields=id%2Cname%2Curl%2Cimage%2Cdescription%2Ccreator%2Ccounts%2Ccreated_at%2Cprivacy%2Creason', (err, json) => {

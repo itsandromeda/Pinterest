@@ -6,12 +6,19 @@
     }
 }
 
+.header {
+    &__grid {
+        margin: auto;
+    }
+}
 .item {
-    background-color: pink;
+    background-color: #EFEFEF;
     border-radius: 5px;
-    display: inline-block;
+    display: inline-table;
+    width: 240px;
+    float: left;
     padding: 10px;
-    margin: 20px;
+    margin: 5px;
     img {
         max-width: 100%;
         border-radius: 5px;
