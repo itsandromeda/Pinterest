@@ -8,7 +8,7 @@ var gulp = require('gulp'),
     config = {
         source: './src/',
         dist: './public',
-        modules : './node_modules/'
+        modules: './node_modules/'
     },
     paths = {
         assets: "/assets/",
@@ -17,6 +17,7 @@ var gulp = require('gulp'),
         png: "img/*.png",
         mainSass: "scss/main.scss",
         mainJS: "js/app.js",
+        js: "js/components/**.js",
         bootstrap: 'bootstrap/dist/'
     },
     sources = {
@@ -25,10 +26,10 @@ var gulp = require('gulp'),
         sass: config.source + paths.assets + paths.sass,
         rootSass: config.source + paths.assets + paths.mainSass,
         png: config.source + paths.assets + paths.png,
-        js: config.source + paths.js,
+        js: config.source + paths.assets + paths.js,
         rootJS: config.source + paths.assets + paths.mainJS,
-        bootstrapCSS : config.modules + paths.bootstrap + "css/bootstrap.min.css",
-        bootstrapJS : config.modules + paths.bootstrap + "js/bootstrap.min.js"
+        bootstrapCSS: config.modules + paths.bootstrap + "css/bootstrap.min.css",
+        bootstrapJS: config.modules + paths.bootstrap + "js/bootstrap.min.js"
     };
 
 gulp.task('html', () => {
@@ -41,10 +42,10 @@ gulp.task("sass", () => {
             outputStyle: "compressed"
         }).on("error", sass.logError));
     let bootstrapcss = gulp.src(sources.bootstrapCSS);
-    
+
     merge(bootstrapcss, sassfile)
-    .pipe(concat("main.css"))
-    .pipe(gulp.dest(config.dist + paths.assets + "css"));
+        .pipe(concat("main.css"))
+        .pipe(gulp.dest(config.dist + paths.assets + "css"));
 });
 
 gulp.task('png', () => {
@@ -53,7 +54,8 @@ gulp.task('png', () => {
 });
 
 gulp.task("js", () => {
-    gulp.src(sources.rootJS)
+    gulp.src([sources.js, sources.rootJS])
+        .pipe(concat(sources.rootJS))
         .pipe(browsefiry())
         .pipe(rename("bundle.js"))
         .pipe(gulp.dest(config.dist + paths.assets + "js"));

@@ -1,0 +1,1 @@
+alert("Estás en components");
